@@ -11,3 +11,5 @@
 
 [node name="Camera" type="Camera2D" parent="Player"]
 scale = Vector2(0.998992, 1)
+
+[node name="GameManager" type="Node" parent="."]
