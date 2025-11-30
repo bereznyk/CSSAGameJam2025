@@ -13,18 +13,18 @@ var curr_zoom = Vector2(1.5, 1.5)
 var num_shapes = 0 # Number of shapes on the map
 var num_enemies = 0 # Number of enemies on the map
 
-const MAX_SHAPES = 50
-const MAX_ENEMIES = 100
+const MAX_SHAPES = 30
+const MAX_ENEMIES = 80
 
 @onready var game_score = %GameScore
 @onready var death_screen = %Death
 @onready var end_score = %EndScore
 @onready var camera = %Camera
 
-const MIN_X = -1100
-const MAX_X = 1100
-const MIN_Y = -1100
-const MAX_Y = 1100
+const MIN_X = -1150
+const MAX_X = 1150
+const MIN_Y = -1150
+const MAX_Y = 1150
 
 enum Shapes {
 	CIRCLE,
