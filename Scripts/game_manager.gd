@@ -20,6 +20,11 @@ const MAX_ENEMIES = 80
 @onready var death_screen = %Death
 @onready var end_score = %EndScore
 @onready var camera = %Camera
+@onready var death_sound = %DeathSound
+@onready var pickup_sound = %PickupSound
+
+const DEATH_SOUND_START = 1.5
+const PICKUP_SOUND_START = 1.52
 
 const MIN_X = -1150
 const MAX_X = 1150
@@ -87,6 +92,8 @@ func _process(delta):
 	camera.zoom = camera.zoom.move_toward(curr_zoom, ZOOM_SPEED * delta)
 
 func end_game():
+	death_sound.play(DEATH_SOUND_START)
+	
 	game_over = true
 	spawning = false
 	get_tree().paused = true
@@ -98,6 +105,8 @@ func end_game():
 	game_score.visible = false
 
 func update_score(count):
+	pickup_sound.play(PICKUP_SOUND_START)
+	
 	score += count
 	num_shapes -= 1
 	game_score.text = "Score: " + str(score)
