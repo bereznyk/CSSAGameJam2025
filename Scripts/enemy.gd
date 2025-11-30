@@ -8,8 +8,8 @@ extends Area2D
 var spawned = false
 var despawnable = true
 
-const MIN_DESPAWN = 15
-const MAX_DESPAWN = 45
+const MIN_DESPAWN = 10
+const MAX_DESPAWN = 20
 
 func _ready() -> void:
 	despawn_timer.wait_time = randi_range(MIN_DESPAWN, MAX_DESPAWN)

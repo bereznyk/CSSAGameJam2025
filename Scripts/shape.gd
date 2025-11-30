@@ -9,8 +9,8 @@ extends CollisionShape2D
 
 var spawned = false
 
-const MIN_DESPAWN = 60
-const MAX_DESPAWN = 90
+const MIN_DESPAWN = 20
+const MAX_DESPAWN = 40
 
 func _ready() -> void:
 	despawn_timer.wait_time = randi_range(MIN_DESPAWN, MAX_DESPAWN)

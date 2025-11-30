@@ -46,7 +46,7 @@ enum Enemy {
 const enemies = [
 	preload("res://Objects/Enemies/enemy.tscn"),
 	preload("res://Objects/Enemies/patrol_enemy.tscn"),
-	preload("res://Objects/Enemies/enemy.tscn"),
+	preload("res://Objects/Enemies/chase_enemy.tscn"),
 ]
 
 const ENEMY_SIZE_RANGE = 0.1
