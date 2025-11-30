@@ -4,6 +4,12 @@ var game_over = false
 var spawning = false
 var score = 0
 
+const ZOOM_IN = Vector2(0.05, 0.05)
+const ZOOM_SPEED = 0.5 # how fast camera zooms out
+const ZOOM_RATE = 2 # how many shapes to pick up before zooming in
+var zoom_count = 0 # too keep track for when we should zoom
+var curr_zoom = Vector2(1.5, 1.5)
+
 var num_shapes = 0 # Number of shapes on the map
 var num_enemies = 0 # Number of enemies on the map
 
@@ -13,6 +19,7 @@ const MAX_ENEMIES = 100
 @onready var game_score = %GameScore
 @onready var death_screen = %Death
 @onready var end_score = %EndScore
+@onready var camera = %Camera
 
 const MIN_X = -1100
 const MAX_X = 1100
@@ -54,6 +61,7 @@ const ENEMY_SIZE_RANGE = 0.1
 
 func _ready():
 	spawning = true
+	camera.zoom = curr_zoom
 
 func _process(delta):
 	if Input.is_action_just_pressed("restart") and game_over:
@@ -68,6 +76,9 @@ func _process(delta):
 		# try spawning an enemy
 		if num_enemies < MAX_ENEMIES:
 			spawn_enemy()
+	
+	# Zoom camera in if needed
+	camera.zoom = camera.zoom.move_toward(curr_zoom, ZOOM_SPEED * delta)
 
 func end_game():
 	game_over = true
@@ -84,6 +95,10 @@ func update_score(count):
 	score += count
 	num_shapes -= 1
 	game_score.text = "Score: " + str(score)
+	
+	zoom_count = (zoom_count + 1) % ZOOM_RATE
+	if zoom_count == 0:
+		curr_zoom -= ZOOM_IN # zoom in camera on collecting shape
 
 func get_spawn_cords():
 	return Vector2(randi_range(MIN_X, MAX_X), randi_range(MIN_Y, MAX_Y))

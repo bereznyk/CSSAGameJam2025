@@ -18,7 +18,14 @@ script = ExtResource("2_344ge")
 [node name="Player" parent="." instance=ExtResource("2_bo1nx")]
 
 [node name="Camera" type="Camera2D" parent="Player"]
-scale = Vector2(0.998992, 1)
+unique_name_in_owner = true
+limit_left = -2000
+limit_top = -2000
+limit_right = 2000
+limit_bottom = 2000
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 15.0
 
 [node name="UI" type="CanvasLayer" parent="Player/Camera"]
 
