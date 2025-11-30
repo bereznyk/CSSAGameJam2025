@@ -13,10 +13,10 @@ const MAX_ENEMIES = 100
 @onready var death_screen = %Death
 @onready var end_score = %EndScore
 
-const MIN_X = -900
-const MAX_X = 900
-const MIN_Y = -900
-const MAX_Y = 900
+const MIN_X = -1100
+const MAX_X = 1100
+const MIN_Y = -1100
+const MAX_Y = 1100
 
 enum Shapes {
 	CIRCLE,
