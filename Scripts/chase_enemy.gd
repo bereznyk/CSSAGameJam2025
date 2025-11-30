@@ -11,7 +11,6 @@ var player = null
 func _ready() -> void:
 	chase_collider.shape = chase_collider.shape.duplicate()
 	chase_collider.shape.radius += randi_range(-CHASE_RANGE, CHASE_RANGE)
-	print(chase_collider.shape.radius)
 	chase_speed += randi_range(-CHASE_SPEED_RANGE, CHASE_SPEED_RANGE)
 	
 	super._ready()

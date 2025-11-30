@@ -20,7 +20,6 @@ func _physics_process(delta: float) -> void:
 		await get_tree().physics_frame
 		
 		if colliding_with_object():
-			print("huh2a")
 			delete_enemy()
 		else:
 			spawned = true
