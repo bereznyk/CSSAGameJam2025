@@ -32,8 +32,10 @@ func _on_body_entered(body: Node2D) -> void:
 			game_manager.end_game()
 
 func colliding_with_object():
+	# don't spawn if on top of something, or near the player
 	return (get_overlapping_areas().size() > 0 
-		or get_overlapping_bodies().size() > 0)
+		or get_overlapping_bodies().size() > 0
+		or despawn_radius.get_overlapping_bodies().size() > 0)
 
 func delete_enemy():
 	queue_free()
