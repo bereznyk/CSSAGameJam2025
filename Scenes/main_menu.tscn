@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci5xxdxg7chef"]
+
+[ext_resource type="Texture2D" uid="uid://bhw75rsqdx5ut" path="res://Assets/MainMenu.png" id="1_28flt"]
+[ext_resource type="Script" uid="uid://cqniqfd82ndyf" path="res://Scripts/main_menu.gd" id="1_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://ccw3n05661oqx" path="res://Assets/Player.png" id="2_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://dbe6r3dcxauqa" path="res://Assets/Enemy.png" id="3_ce3w2"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ce3w2")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_28flt")
+
+[node name="Start" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 405.0
+offset_top = 429.0
+offset_right = 713.0
+offset_bottom = 737.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("2_1ehe0")
+flat = true
+
+[node name="Quit" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 963.0
+offset_top = 432.0
+offset_right = 1271.0
+offset_bottom = 740.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("3_ce3w2")
+flat = true
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
