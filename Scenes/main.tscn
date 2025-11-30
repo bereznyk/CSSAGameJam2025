@@ -1,14 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://su8gicj4wc7q"]
+[gd_scene load_steps=5 format=3 uid="uid://su8gicj4wc7q"]
 
 [ext_resource type="PackedScene" uid="uid://rmgvicgt56lk" path="res://Objects/level.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://5yx6mdl2dmd1" path="res://Scripts/game_manager.gd" id="2_344ge"]
 [ext_resource type="PackedScene" uid="uid://8n4m71hcoq1d" path="res://Objects/player.tscn" id="2_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://d2mo1nekcjicu" path="res://Assets/DeathScreen.png" id="3_6bp64"]
-[ext_resource type="PackedScene" uid="uid://po55jihpulrv" path="res://Objects/Shapes/circle.tscn" id="3_8gbba"]
-[ext_resource type="PackedScene" uid="uid://ducugqvanjrjm" path="res://Objects/Shapes/square.tscn" id="4_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://iovfosjwpc6e" path="res://Objects/Shapes/stick.tscn" id="5_kry3j"]
-[ext_resource type="PackedScene" uid="uid://cjejonlqbbv8v" path="res://Objects/Shapes/triangle.tscn" id="6_21xkr"]
-[ext_resource type="PackedScene" uid="uid://b4bwe03wcxlyj" path="res://Objects/Enemies/enemy.tscn" id="9_ynf5e"]
 
 [node name="Main" type="Node2D"]
 
@@ -17,45 +12,6 @@
 [node name="GameManager" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("2_344ge")
-
-[node name="Shape" parent="." instance=ExtResource("3_8gbba")]
-position = Vector2(-123, -27)
-
-[node name="Shape2" parent="." instance=ExtResource("3_8gbba")]
-position = Vector2(88, 152)
-
-[node name="Shape3" parent="." instance=ExtResource("3_8gbba")]
-position = Vector2(160, -105)
-
-[node name="Shape4" parent="." instance=ExtResource("3_8gbba")]
-position = Vector2(-117, 122)
-
-[node name="Shape5" parent="." instance=ExtResource("4_jjvhh")]
-position = Vector2(118, 41)
-
-[node name="Shape6" parent="." instance=ExtResource("4_jjvhh")]
-position = Vector2(-59, -117)
-
-[node name="Shape7" parent="." instance=ExtResource("5_kry3j")]
-position = Vector2(65, -82)
-
-[node name="Shape8" parent="." instance=ExtResource("6_21xkr")]
-position = Vector2(-390, 96)
-
-[node name="Shape9" parent="." instance=ExtResource("6_21xkr")]
-position = Vector2(-398, -213)
-
-[node name="Shape10" parent="." instance=ExtResource("6_21xkr")]
-position = Vector2(500, -273)
-
-[node name="Shape11" parent="." instance=ExtResource("6_21xkr")]
-position = Vector2(439, 286)
-
-[node name="Enemy" parent="." instance=ExtResource("9_ynf5e")]
-position = Vector2(-217, 36)
-
-[node name="Enemy2" parent="." instance=ExtResource("9_ynf5e")]
-position = Vector2(355, -169)
 
 [node name="Player" parent="." instance=ExtResource("2_bo1nx")]
 
