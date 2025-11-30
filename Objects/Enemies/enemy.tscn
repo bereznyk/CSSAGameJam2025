@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4bwe03wcxlyj"]
+[gd_scene load_steps=5 format=3 uid="uid://b4bwe03wcxlyj"]
 
 [ext_resource type="Script" uid="uid://ct3y012kptfyf" path="res://Scripts/enemy.gd" id="1_gwkk3"]
 [ext_resource type="Texture2D" uid="uid://dbe6r3dcxauqa" path="res://Assets/Enemies/Enemy.png" id="2_07deu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lc1or"]
 radius = 15.0333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oji6h"]
+radius = 200.0
 
 [node name="Enemy" type="Area2D"]
 script = ExtResource("1_gwkk3")
@@ -18,4 +21,18 @@ texture = ExtResource("2_07deu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lc1or")
 
+[node name="DespawnRadius" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DespawnRadius"]
+shape = SubResource("CircleShape2D_oji6h")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="DespawnRadius" to="." method="_on_despawn_radius_body_entered"]
+[connection signal="body_exited" from="DespawnRadius" to="." method="_on_despawn_radius_body_exited"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

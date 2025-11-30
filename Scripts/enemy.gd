@@ -2,8 +2,18 @@ extends Area2D
 
 @onready var game_manager = get_tree().root.get_node("Main/GameManager")
 @onready var sprite = %Sprite2D
+@onready var despawn_radius = %DespawnRadius
+@onready var despawn_timer = %DespawnTimer
 
 var spawned = false
+var despawnable = true
+
+const MIN_DESPAWN = 15
+const MAX_DESPAWN = 45
+
+func _ready() -> void:
+	despawn_timer.wait_time = randi_range(MIN_DESPAWN, MAX_DESPAWN)
+	despawn_timer.start()
 
 func _physics_process(delta: float) -> void:
 	if not spawned:
@@ -11,8 +21,7 @@ func _physics_process(delta: float) -> void:
 		
 		if colliding_with_object():
 			print("huh2a")
-			queue_free()
-			game_manager.num_enemies -= 1
+			delete_enemy()
 		else:
 			spawned = true
 			sprite.visible = true
@@ -24,5 +33,23 @@ func _on_body_entered(body: Node2D) -> void:
 			game_manager.end_game()
 
 func colliding_with_object():
-	return (get_overlapping_areas().size() > 0 
+	# 1 because of the area for detecting despawn
+	return (get_overlapping_areas().size() > 1 
 		or get_overlapping_bodies().size() > 0)
+
+func delete_enemy():
+	queue_free()
+	game_manager.num_enemies -= 1
+
+func _on_despawn_timer_timeout() -> void:
+	# if enemy is not near the player let it despawn
+	if despawnable:
+		delete_enemy()
+
+func _on_despawn_radius_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		despawnable = false
+
+func _on_despawn_radius_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		despawnable = true
