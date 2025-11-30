@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ducugqvanjrjm"]
+
+[ext_resource type="PackedScene" uid="uid://c8hjyt7all1jf" path="res://Objects/Shapes/shape.tscn" id="1_5epwn"]
+[ext_resource type="Texture2D" uid="uid://dgj7yvnxwrq1j" path="res://Assets/Square.png" id="2_xncbd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vp4b8"]
+size = Vector2(30, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n04cd"]
+size = Vector2(32, 32)
+
+[node name="Shape" instance=ExtResource("1_5epwn")]
+
+[node name="ShapeCollider" parent="." index="0"]
+shape = SubResource("RectangleShape2D_vp4b8")
+
+[node name="CollisionShape2D" parent="ShapeCollider/StickRange" index="0"]
+shape = SubResource("RectangleShape2D_n04cd")
+
+[node name="Sprite2D" parent="ShapeCollider" index="1"]
+texture = ExtResource("2_xncbd")

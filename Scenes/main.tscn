@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://su8gicj4wc7q"]
+[gd_scene load_steps=7 format=3 uid="uid://su8gicj4wc7q"]
 
-[ext_resource type="PackedScene" uid="uid://rmgvicgt56lk" path="res://Prefabs/level.tscn" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://8n4m71hcoq1d" path="res://Prefabs/player.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://rmgvicgt56lk" path="res://Objects/level.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://8n4m71hcoq1d" path="res://Objects/player.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://po55jihpulrv" path="res://Objects/Shapes/circle.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://ducugqvanjrjm" path="res://Objects/Shapes/square.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://iovfosjwpc6e" path="res://Objects/Shapes/stick.tscn" id="5_kry3j"]
+[ext_resource type="PackedScene" uid="uid://cjejonlqbbv8v" path="res://Objects/Shapes/triangle.tscn" id="6_21xkr"]
 
 [node name="Main" type="Node2D"]
 
@@ -13,3 +17,36 @@
 scale = Vector2(0.998992, 1)
 
 [node name="GameManager" type="Node" parent="."]
+
+[node name="Shape" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(-123, -27)
+
+[node name="Shape2" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(88, 152)
+
+[node name="Shape3" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(160, -105)
+
+[node name="Shape4" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(-117, 122)
+
+[node name="Shape5" parent="." instance=ExtResource("4_jjvhh")]
+position = Vector2(118, 41)
+
+[node name="Shape6" parent="." instance=ExtResource("4_jjvhh")]
+position = Vector2(-59, -117)
+
+[node name="Shape7" parent="." instance=ExtResource("5_kry3j")]
+position = Vector2(65, -82)
+
+[node name="Shape8" parent="." instance=ExtResource("6_21xkr")]
+position = Vector2(-390, 96)
+
+[node name="Shape9" parent="." instance=ExtResource("6_21xkr")]
+position = Vector2(-398, -213)
+
+[node name="Shape10" parent="." instance=ExtResource("6_21xkr")]
+position = Vector2(500, -273)
+
+[node name="Shape11" parent="." instance=ExtResource("6_21xkr")]
+position = Vector2(439, 286)

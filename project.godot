@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 project/assembly_name="CSSAGameJam2025"
 
+[global_group]
+
+Shapes=""
+Player=""
+
 [input]
 
 move_left={

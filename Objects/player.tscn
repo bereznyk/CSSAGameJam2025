@@ -6,15 +6,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_5wxv7"]
 radius = 15.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_5wxv7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_y6xdh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 0.03603
 shape = SubResource("CircleShape2D_5wxv7")
-
-[node name="Shapes" type="Node" parent="."]

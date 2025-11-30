@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://po55jihpulrv"]
+
+[ext_resource type="PackedScene" uid="uid://c8hjyt7all1jf" path="res://Objects/Shapes/shape.tscn" id="1_tvjyc"]
+[ext_resource type="Texture2D" uid="uid://mk3lj4s43gdj" path="res://Assets/Circle.png" id="2_3dbc1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tvjyc"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3dbc1"]
+radius = 16.0
+
+[node name="Shape" instance=ExtResource("1_tvjyc")]
+
+[node name="ShapeCollider" parent="." index="0"]
+shape = SubResource("CircleShape2D_tvjyc")
+
+[node name="CollisionShape2D" parent="ShapeCollider/StickRange" index="0"]
+shape = SubResource("CircleShape2D_3dbc1")
+
+[node name="Sprite2D" parent="ShapeCollider" index="1"]
+texture = ExtResource("2_3dbc1")
