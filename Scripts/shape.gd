@@ -31,6 +31,11 @@ func _physics_process(delta: float) -> void:
 func delete_static_shape():
 	get_parent().queue_free()
 	game_manager.num_shapes -= 1
+	
+func setup_shape(scale, rotation, skew):
+	self.scale *= scale
+	self.rotation = rotation
+	self.skew = skew
 
 # If we collide with player, attach the shape to them
 func _on_stick_range_body_entered(body: Node2D) -> void:
@@ -47,11 +52,12 @@ func stick_to_player(player):
 	despawn_timer.stop()
 	
 	get_parent().call_deferred("remove_child", self)
-	player.call_deferred("add_child", self)
 	
 	position = player.to_local(global_position)
 	rotation -= player.rotation
 	stick_range.set_deferred("monitoring", false)
+	
+	player.call_deferred("add_child", self)
 
 func colliding_with_object():
 	# greater than 1 cause of the StaticBody2D parent

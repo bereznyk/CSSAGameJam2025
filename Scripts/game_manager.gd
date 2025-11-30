@@ -34,7 +34,7 @@ const shapes_array = [
 ]
 
 const SHAPE_SIZE_RANGE = 0.25
-const TRIANGLE_SKEW_RANGE = 0.5
+const TRIANGLE_SKEW_RANGE = PI/4
 
 enum Enemy {
 	BASIC,
@@ -45,7 +45,7 @@ enum Enemy {
 
 const enemies = [
 	preload("res://Objects/Enemies/enemy.tscn"),
-	preload("res://Objects/Enemies/enemy.tscn"),
+	preload("res://Objects/Enemies/patrol_enemy.tscn"),
 	preload("res://Objects/Enemies/enemy.tscn"),
 ]
 
@@ -55,17 +55,14 @@ func _process(delta):
 	if Input.is_action_just_pressed("restart") and game_over:
 		get_tree().paused = false
 		get_tree().reload_current_scene()
-		
+	
+	# try spawning a shape
 	if num_shapes < MAX_SHAPES:
 		spawn_shape()
-		
+	
+	# try spawning an enemy
 	if num_enemies < MAX_ENEMIES:
 		spawn_enemy()
-		
-func restart_game():
-	
-	for child in get_children():
-		child.queue_free()
 
 func end_game():
 	game_over = true
@@ -90,6 +87,14 @@ func spawn_shape():
 	var new_shape = shapes_array[shape_to_spawn].instantiate()
 	new_shape.position = get_spawn_cords()
 	
+	var new_scale = randf_range(1 - SHAPE_SIZE_RANGE, 1 + 2*SHAPE_SIZE_RANGE)
+	var new_rotation = randf_range(-PI, PI)
+	var new_skew = 0
+	if shape_to_spawn == Shapes.TRIANGLE:
+		new_skew = randf_range(-TRIANGLE_SKEW_RANGE, TRIANGLE_SKEW_RANGE)
+		
+	new_shape.get_node("ShapeCollider").setup_shape(new_scale, new_rotation, new_skew)
+	
 	# just to stop a crash on reload
 	if get_tree() != null:
 		get_tree().current_scene.add_child(new_shape)
@@ -100,6 +105,9 @@ func spawn_enemy():
 	var enemy_to_spawn = randi_range(0, Enemy.NUM_ENEMIES - 1)
 	var new_enemy = enemies[enemy_to_spawn].instantiate()
 	new_enemy.position = get_spawn_cords()
+	
+	var new_scale = randf_range(1 - ENEMY_SIZE_RANGE, 1 + 2*ENEMY_SIZE_RANGE)
+	new_enemy.scale *= new_scale
 	
 	# just to stop a crash on reload
 	if get_tree() != null:

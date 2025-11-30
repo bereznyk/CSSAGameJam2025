@@ -33,8 +33,7 @@ func _on_body_entered(body: Node2D) -> void:
 			game_manager.end_game()
 
 func colliding_with_object():
-	# 1 because of the area for detecting despawn
-	return (get_overlapping_areas().size() > 1 
+	return (get_overlapping_areas().size() > 0 
 		or get_overlapping_bodies().size() > 0)
 
 func delete_enemy():
