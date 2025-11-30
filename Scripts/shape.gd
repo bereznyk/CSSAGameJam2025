@@ -50,14 +50,15 @@ func _on_stick_range_body_entered(body: Node2D) -> void:
 	
 func stick_to_player(player):
 	despawn_timer.stop()
-	
+
 	get_parent().call_deferred("remove_child", self)
+	player.call_deferred("add_child", self)
 	
-	position = player.to_local(global_position)
-	rotation -= player.rotation
+	set_deferred("position", player.to_local(global_position))
+	set_deferred("rotation", rotation - player.rotation)
+	
 	stick_range.set_deferred("monitoring", false)
 	
-	player.call_deferred("add_child", self)
 
 func colliding_with_object():
 	# greater than 1 cause of the StaticBody2D parent
