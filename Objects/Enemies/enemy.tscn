@@ -10,6 +10,8 @@ radius = 15.0333
 script = ExtResource("1_gwkk3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_07deu")
 

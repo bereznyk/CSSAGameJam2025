@@ -6,6 +6,7 @@
 
 [node name="ShapeCollider" type="CollisionShape2D" parent="." groups=["Shapes"]]
 unique_name_in_owner = true
+disabled = true
 script = ExtResource("1_8s3nu")
 
 [node name="StickRange" type="Area2D" parent="ShapeCollider"]
@@ -14,6 +15,8 @@ unique_name_in_owner = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShapeCollider/StickRange"]
 
 [node name="Sprite2D" type="Sprite2D" parent="ShapeCollider"]
+unique_name_in_owner = true
+visible = false
 scale = Vector2(0.1, 0.1)
 
 [connection signal="body_entered" from="ShapeCollider/StickRange" to="ShapeCollider" method="_on_stick_range_body_entered"]
