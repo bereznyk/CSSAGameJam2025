@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cjejonlqbbv8v"]
 
 [ext_resource type="PackedScene" uid="uid://c8hjyt7all1jf" path="res://Objects/Shapes/shape.tscn" id="1_r6nui"]
-[ext_resource type="Texture2D" uid="uid://dou2mwpnl6m77" path="res://Assets/Triangle.png" id="2_tqhlk"]
+[ext_resource type="Texture2D" uid="uid://dou2mwpnl6m77" path="res://Assets/Shapes/Triangle.png" id="2_tqhlk"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_sak8n"]
 points = PackedVector2Array(0, -15, -15, 15, 15, 15)

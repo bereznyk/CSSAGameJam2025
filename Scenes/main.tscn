@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://su8gicj4wc7q"]
+[gd_scene load_steps=9 format=3 uid="uid://su8gicj4wc7q"]
 
 [ext_resource type="PackedScene" uid="uid://rmgvicgt56lk" path="res://Objects/level.tscn" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://5yx6mdl2dmd1" path="res://Scripts/game_manager.gd" id="2_344ge"]
 [ext_resource type="PackedScene" uid="uid://8n4m71hcoq1d" path="res://Objects/player.tscn" id="2_bo1nx"]
+[ext_resource type="Texture2D" uid="uid://d2mo1nekcjicu" path="res://Assets/DeathScreen.png" id="3_6bp64"]
 [ext_resource type="PackedScene" uid="uid://po55jihpulrv" path="res://Objects/Shapes/circle.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://ducugqvanjrjm" path="res://Objects/Shapes/square.tscn" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://iovfosjwpc6e" path="res://Objects/Shapes/stick.tscn" id="5_kry3j"]
@@ -11,12 +13,8 @@
 
 [node name="Level" parent="." instance=ExtResource("1_jjgbg")]
 
-[node name="Player" parent="." instance=ExtResource("2_bo1nx")]
-
-[node name="Camera" type="Camera2D" parent="Player"]
-scale = Vector2(0.998992, 1)
-
 [node name="GameManager" type="Node" parent="."]
+script = ExtResource("2_344ge")
 
 [node name="Shape" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(-123, -27)
@@ -50,3 +48,37 @@ position = Vector2(500, -273)
 
 [node name="Shape11" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(439, 286)
+
+[node name="Player" parent="." instance=ExtResource("2_bo1nx")]
+
+[node name="Camera" type="Camera2D" parent="Player"]
+scale = Vector2(0.998992, 1)
+
+[node name="UI" type="CanvasLayer" parent="Player/Camera"]
+
+[node name="GameScore" type="Label" parent="Player/Camera/UI"]
+unique_name_in_owner = true
+offset_left = 10.0
+offset_right = 138.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 40
+text = "Score: 0"
+
+[node name="Death" type="TextureRect" parent="Player/Camera/UI"]
+unique_name_in_owner = true
+visible = false
+offset_right = 2015.0
+offset_bottom = 1035.0
+scale = Vector2(0.58, 0.58)
+texture = ExtResource("3_6bp64")
+
+[node name="EndScore" type="Label" parent="Player/Camera/UI"]
+unique_name_in_owner = true
+visible = false
+offset_left = 610.0
+offset_top = 354.0
+offset_right = 696.0
+offset_bottom = 559.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "0"

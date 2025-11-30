@@ -5,8 +5,6 @@ extends CharacterBody2D
 
 var rotation_direction = 0
 
-@onready var collider
-
 func get_input():
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = input_direction * speed

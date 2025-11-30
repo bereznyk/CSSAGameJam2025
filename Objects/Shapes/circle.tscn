@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://po55jihpulrv"]
 
 [ext_resource type="PackedScene" uid="uid://c8hjyt7all1jf" path="res://Objects/Shapes/shape.tscn" id="1_tvjyc"]
-[ext_resource type="Texture2D" uid="uid://mk3lj4s43gdj" path="res://Assets/Circle.png" id="2_3dbc1"]
+[ext_resource type="Texture2D" uid="uid://mk3lj4s43gdj" path="res://Assets/Shapes/Circle.png" id="2_3dbc1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tvjyc"]
 radius = 15.0
