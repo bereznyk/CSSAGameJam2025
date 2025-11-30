@@ -1,4 +1,4 @@
-extends "res://scripts/enemy.gd"
+extends "res://Scripts/enemy.gd"
 
 const MIN_X = -900
 const MAX_X = 900

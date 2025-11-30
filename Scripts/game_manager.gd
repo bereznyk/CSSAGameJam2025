@@ -139,7 +139,7 @@ func spawn_shape():
 	
 func spawn_enemy():
 	var enemy_roll = randf()
-	var enemy_to_spawn = Enemy.BASIC
+	var enemy_to_spawn = 0
 	
 	while enemy_roll > enemy_spawn_rates[enemy_to_spawn] and enemy_to_spawn < Enemy.NUM_ENEMIES - 1:
 		enemy_to_spawn += 1

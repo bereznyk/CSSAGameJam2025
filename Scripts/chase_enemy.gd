@@ -1,4 +1,4 @@
-extends "res://scripts/enemy.gd"
+extends "res://Scripts/enemy.gd"
 
 @onready var chase_collider = %CollisionShape2D
 
