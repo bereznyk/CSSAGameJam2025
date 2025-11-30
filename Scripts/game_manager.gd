@@ -9,7 +9,7 @@ var score = 0
 	
 func _process(delta):
 	if Input.is_action_just_pressed("restart") and game_over:
-		print("restr")
+		get_tree().paused = false
 		get_tree().reload_current_scene()
 
 func end_game():
@@ -17,8 +17,10 @@ func end_game():
 	get_tree().paused = true
 	
 	end_score.text = str(score)
-	death_screen.visible
-	end_score.visible
+	death_screen.visible = true
+	end_score.visible = true
+	
+	game_score.visible = false
 
 func update_score(count):
 	score += count

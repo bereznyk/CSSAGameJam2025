@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://su8gicj4wc7q"]
+[gd_scene load_steps=10 format=3 uid="uid://su8gicj4wc7q"]
 
 [ext_resource type="PackedScene" uid="uid://rmgvicgt56lk" path="res://Objects/level.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://5yx6mdl2dmd1" path="res://Scripts/game_manager.gd" id="2_344ge"]
@@ -8,12 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://ducugqvanjrjm" path="res://Objects/Shapes/square.tscn" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://iovfosjwpc6e" path="res://Objects/Shapes/stick.tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://cjejonlqbbv8v" path="res://Objects/Shapes/triangle.tscn" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://b4bwe03wcxlyj" path="res://Objects/Enemies/enemy.tscn" id="9_ynf5e"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Level" parent="." instance=ExtResource("1_jjgbg")]
 
 [node name="GameManager" type="Node" parent="."]
+process_mode = 3
 script = ExtResource("2_344ge")
 
 [node name="Shape" parent="." instance=ExtResource("3_8gbba")]
@@ -48,6 +50,12 @@ position = Vector2(500, -273)
 
 [node name="Shape11" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(439, 286)
+
+[node name="Enemy" parent="." instance=ExtResource("9_ynf5e")]
+position = Vector2(-217, 36)
+
+[node name="Enemy2" parent="." instance=ExtResource("9_ynf5e")]
+position = Vector2(355, -169)
 
 [node name="Player" parent="." instance=ExtResource("2_bo1nx")]
 
