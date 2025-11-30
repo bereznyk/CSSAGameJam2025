@@ -13,7 +13,7 @@ var curr_zoom = Vector2(1.5, 1.5)
 var num_shapes = 0 # Number of shapes on the map
 var num_enemies = 0 # Number of enemies on the map
 
-const MAX_SHAPES = 100
+const MAX_SHAPES = 50
 const MAX_ENEMIES = 100
 
 @onready var game_score = %GameScore
@@ -55,6 +55,12 @@ const enemies = [
 	preload("res://Objects/Enemies/enemy.tscn"),
 	preload("res://Objects/Enemies/patrol_enemy.tscn"),
 	preload("res://Objects/Enemies/chase_enemy.tscn"),
+]
+
+const enemy_spawn_rates = [
+	0.5,
+	0.8,
+	1.0,
 ]
 
 const ENEMY_SIZE_RANGE = 0.1
@@ -123,7 +129,12 @@ func spawn_shape():
 	num_shapes += 1
 	
 func spawn_enemy():
-	var enemy_to_spawn = randi_range(0, Enemy.NUM_ENEMIES - 1)
+	var enemy_roll = randf()
+	var enemy_to_spawn = Enemy.BASIC
+	
+	while enemy_roll > enemy_spawn_rates[enemy_to_spawn] and enemy_to_spawn < Enemy.NUM_ENEMIES - 1:
+		enemy_to_spawn += 1
+	
 	var new_enemy = enemies[enemy_to_spawn].instantiate()
 	new_enemy.position = get_spawn_cords()
 	
