@@ -1,6 +1,7 @@
 extends Node
 
 var game_over = false
+var spawning = false
 var score = 0
 
 var num_shapes = 0 # Number of shapes on the map
@@ -51,21 +52,26 @@ const enemies = [
 
 const ENEMY_SIZE_RANGE = 0.1
 
+func _ready():
+	spawning = true
+
 func _process(delta):
 	if Input.is_action_just_pressed("restart") and game_over:
 		get_tree().paused = false
 		get_tree().reload_current_scene()
 	
-	# try spawning a shape
-	if num_shapes < MAX_SHAPES:
-		spawn_shape()
-	
-	# try spawning an enemy
-	if num_enemies < MAX_ENEMIES:
-		spawn_enemy()
+	if spawning:
+		# try spawning a shape
+		if num_shapes < MAX_SHAPES:
+			spawn_shape()
+		
+		# try spawning an enemy
+		if num_enemies < MAX_ENEMIES:
+			spawn_enemy()
 
 func end_game():
 	game_over = true
+	spawning = false
 	get_tree().paused = true
 	
 	end_score.text = str(score)
